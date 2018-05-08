@@ -193,8 +193,8 @@ def test(args, epoch, model, testF, testW, testX, testY):
     if args.cuda:
         batch_data_t = batch_data_t.cuda()
         batch_targets_t = batch_targets_t.cuda()
-    batch_data = Variable(batch_data_t, volatile=True)
-    batch_targets = Variable(batch_targets_t, volatile=True)
+    batch_data = Variable(batch_data_t, requires_grad=False)
+    batch_targets = Variable(batch_targets_t, requires_grad=False)
 
     for i in range(0, testX.size(0), batchSz):
         print('Testing model: {}/{}'.format(i, testX.size(0)), end='\r')
