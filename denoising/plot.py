@@ -87,7 +87,7 @@ def plotD(initD, latestD, workDir):
 def rolling(N, i, loss):
     i_ = i[N-1:]
     K = np.full(N, 1./N)
-    loss_ = np.convolve(loss, K, 'valid')
+    loss_ = np.convolve([float(l.split(",")[0][7:]) for l in loss], K, 'valid')
     return i_, loss_
 
 if __name__ == '__main__':
